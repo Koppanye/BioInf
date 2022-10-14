@@ -5,3 +5,5 @@ with open('prot_test', 'r') as fájl:
     for i in range(0,len(s)-6,3):
         prot_string += codon_dict[s[i:i+3]]
     print(prot_string)
+
+
