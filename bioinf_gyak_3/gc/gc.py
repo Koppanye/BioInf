@@ -11,8 +11,6 @@ lista = sorted(list(parok.keys()), key = lambda x: gc_content(parok[x]), reverse
 print(lista[0])
 print(gc_content(parok[lista[0]]))
 
-import networkx as nx
-print(nx)
 
 
 
