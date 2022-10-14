@@ -3,10 +3,7 @@ dn = os.path.dirname(__file__)
 pdn = os.path.join(dn,"..")
 sys.path.append(pdn)
 
-from utils import fasta_reader
-
-def gc_content(s):
-    return len([i for i in s if i == 'G' or i == 'C']) / len(s) * 100
+from utils import fasta_reader, gc_content
 
 parok = fasta_reader('gc_test')
 

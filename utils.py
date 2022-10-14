@@ -11,3 +11,6 @@ def fasta_reader(s):
             else:
                 dikt[prev] += s
         return dikt
+
+def gc_content(s):
+    return len([i for i in s if i == 'G' or i == 'C']) / len(s) * 100
