@@ -3,12 +3,14 @@ def fasta_reader(s):
         inpt = fájl.read().split('\n')
         dikt = {}
         prev = ''
-        for s in inpt[:-1]:
+        for s in inpt:
+            if len(s) == 0:
+                break
             if s[0] == '>':
                 s = s[1:]
                 dikt[s] = ''
                 prev = s
-            else:
+            elif len(s) != 0:
                 dikt[prev] += s
         return dikt
 
