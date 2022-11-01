@@ -46,3 +46,20 @@ def rev_comp(dna):
         elif dna[i] == 'C':
             rev.append('G')
     return ''.join(rev)
+
+def hamming(s,t):
+    d = 0
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            d += 1
+    return d
+
+def rand_from_gc(s,x):
+    val = 1
+    for i in range(len(s)):
+        if s[i] == "G" or s[i] == "C":
+            val *= (x / 2)
+        else:
+            val *= (1 - x) / 2
+    return val
+

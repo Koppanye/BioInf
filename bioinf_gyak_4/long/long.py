@@ -4,7 +4,6 @@ pdn = os.path.join(dn, "..")
 sys.path.append(pdn)
 
 from utils import fasta_reader
-import networkx as nx
 
 dnas = fasta_reader('long_test')
 dna_rosa = list(dnas.keys())
@@ -13,32 +12,23 @@ dna_strings = list(dnas.values())
 def overlap(s,t):
     return max([k for k in range(len(s)) if s[-k:] == t[:k] or k == 0])
 
-G = nx.DiGraph()
-G.add_nodes_from(dna_strings)
+#print(dna_strings)
+sorrend = []
+c = len(dna_strings)
+while len(dna_strings) != 0:
+    for u in dna_strings:
+        d = [i for i in dna_strings if overlap(i,u) > max(len(i), len(u))]
+        if len(d) == 0:
+            sorrend.append(u)
+            dna_strings.remove(u)
 
-for u in G.nodes():
-    for v in G.nodes():
-        if overlap(u,v) > max(len(u) / 2, len(v) / 2):
-            G.add_edge(u,v)
-
-sort_nodes = sorted(G.nodes, key = lambda x: G.out_degree(x))
-v = sort_nodes[0]
-u = list(G.successors(v))[0]
-k = overlap(v,u)
-G.add_edge(v + u[k:], list(G.successors(u))[0])
-G.remove_node(v)
-G.remove_node(u)
-print(G.edges(), G.nodes())
+s = sorrend[0]
+for i in range(1, len(sorrend)):
+    s += sorrend[i][overlap(sorrend[i-1], sorrend[i]):]
+print(s)
 
 
-for i in range(len(G.nodes()-1)):
-    sort_nodes = sorted(G.nodes, key = lambda x: G.out_degree(x))
-    v = sort_nodes[0]
-    u = list(G.successors(v))[0]
-    k = overlap(v,u)
-    G.add_edge(v + u[k:], list(G.successors(u))[0])
-    G.remove_node(v)
-    G.remove_node(u)
+
 
 
 
