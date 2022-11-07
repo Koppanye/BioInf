@@ -63,3 +63,12 @@ def rand_from_gc(s,x):
             val *= (1 - x) / 2
     return val
 
+def subs(s,t):
+    indices = []
+    for i in range(len(s)-len(t)):
+        if s[i:i+len(t)] == t:
+            indices.append(i)
+    return indices
+
+def overlap(s,t):
+    return max([i for i in range(len(s)) if t[:i] == s[-i:]])
