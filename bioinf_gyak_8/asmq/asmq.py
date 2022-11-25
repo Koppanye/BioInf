@@ -1,4 +1,4 @@
-with open("asmq_test", "r") as f:
+with open("asmq_test_2", "r") as f:
     l = []
     line = f.readline()
     while line:
@@ -12,6 +12,6 @@ with open("asmq_test", "r") as f:
     fifty = max([i for i in range(maxlen) if lista[i] / lsum >= 0.5]) + 1
     seventyfive = max([i for i in range(maxlen) if lista[i] / lsum >= 0.75]) + 1
 
-    print(lista)
-    print(maxlen)
+    #print(lista)
+    #print(maxlen)
     print(fifty, seventyfive)
